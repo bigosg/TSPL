@@ -155,17 +155,3 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
     print("ACCESS DENIED")
 }
 // 输出 "Welcome!"
-
-
-
-
-
-
-
-
-
-
-
-
-
-

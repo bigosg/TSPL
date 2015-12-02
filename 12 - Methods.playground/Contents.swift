@@ -149,22 +149,3 @@ if player.tracker.advanceToLevel(6) {
     print("level 6 has not yet been unlocked")
 }
 // 打印输出：level 6 has not yet been unlocked
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

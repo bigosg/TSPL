@@ -157,23 +157,3 @@ let four = ArithmeticExpression.Number(4)
 let sum = ArithmeticExpression.Addition(five, four)
 let product = ArithmeticExpression.Multiplication(sum, ArithmeticExpression.Number(2))
 print(evaluate(product))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

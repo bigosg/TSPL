@@ -308,25 +308,3 @@ while currentValue1 != 0 {
 }
 
 print("zero")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

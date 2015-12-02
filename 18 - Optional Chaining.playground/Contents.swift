@@ -191,20 +191,3 @@ if let beginsWithThe = john1.residence?.address?.buildingIdentifier()?.hasPrefix
         print("John's building identifier does not begin with \"The\".")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

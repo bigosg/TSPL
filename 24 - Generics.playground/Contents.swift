@@ -221,20 +221,3 @@ if allItemsMatch(whereClauseStackOfStrings, whereClauseArrayOfStrings) {
 } else {
     print("Not all items match.")
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

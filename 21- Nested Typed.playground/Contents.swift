@@ -47,6 +47,3 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 
 let theKingOfSpades = BlackjackCard(rank: .King, suit: .Clubs)
 print("theKingOfSpades: \(theKingOfSpades.description)")
-
-
-

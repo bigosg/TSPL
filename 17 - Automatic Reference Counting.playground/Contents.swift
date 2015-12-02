@@ -232,24 +232,3 @@ var paragraph1: HTMLELement1? = HTMLELement1(name: "p", text: "hello, world")
 print(paragraph1!.asHTML())
 // 打印 “<p>hello, world</p>”
 paragraph1 = nil
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -197,21 +197,3 @@ print(rightChannel.currentLevel)
 // 输出 "10"
 print(AudioChannel.maxInputLevelForAllChannels)
 // 输出 "10"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

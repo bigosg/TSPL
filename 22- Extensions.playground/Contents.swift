@@ -132,6 +132,3 @@ func printIntegerKinds(numbers: [Int]) {
 }
 
 printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
-
-
-

@@ -240,28 +240,3 @@ for airportName in airports.values {
 let airportCodes = [String](airports.keys)
 
 let airportNames = [String](airports.values)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  

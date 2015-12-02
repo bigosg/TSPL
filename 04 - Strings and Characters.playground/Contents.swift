@@ -189,17 +189,3 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 // 打印输出 "6 mansion scenes; 2 cell scenes"
 
 /****** 字符串的Unicode表示形式 *******/
-
-
-
-
-
-
-
-
-
-
-
-
-
-

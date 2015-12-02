@@ -423,14 +423,3 @@ for _ in 1...5 {
     counter.increment()
     print(counter.count)
 }
-
-
-
-
-
-
-
-
-
-
-

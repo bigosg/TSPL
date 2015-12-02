@@ -58,10 +58,3 @@ matrix[0, 1] = 1.5
 matrix[1, 0] = 3.2
 
 // let someValue = matrix[2, 2]
-
-
-
-
-
-
-

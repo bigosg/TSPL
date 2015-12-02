@@ -50,14 +50,3 @@ Bank.coinsInBank
 
 playerOne = nil
 Bank.coinsInBank
-
-
-
-
-
-
-
-
-
-
-
