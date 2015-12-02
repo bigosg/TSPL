@@ -1,62 +1,59 @@
-var str = "Hello, playground"
 
+var str = "Hello, playground"
 print(str)
 
+//===========================
+//       Simple Values
+//===========================
 
-/***** 简单值 *****/
-//定义一个int常量
 let myIntConstant = 50
 
-//定义一个隐式double常量
 let myImplicitDoubleConstant = 50.0
 
-//定义一个显式double常量
 let myExplicitDoubleConstant:Double = 50.00
 
-//定义一个浮点类型
 let mFloatConstant:Float = 50.000
 
 let label = "The width is "
 let width = 95
 let widthLabel = label + String(width)
 
-//数值类型转换成字符类型
 let apples = 3
 let orange = 5
 let appleSummary = "I have \(apples) apples"
 let fruitSummary = "I have \(apples + orange) pieces of fruit."
 
-// 数组
+// Array
 var shoppingList = ["apple","food","vagetable"]
 shoppingList[1] = "pig"
-
 print(shoppingList)
 
-// 字典
+// Dictionary
 var occupation = [
   "1": 1,
   "2": 2,
 ]
 occupation["2"] = 3
-
 print(occupation)
 
-let emptyArray = [String]() // 空的数组
-let emptyDictionary = [String: Double]() //空的字典
+let emptyArray = [String]() // empty
+let emptyDictionary = [String: Double]() // empty
 shoppingList = []
 occupation = [:]
 
 print(shoppingList)
 print(occupation)
 
+//===========================
+//       Control Flow
+//===========================
 
-/***** 控制流 *****/
+// Use if and switch to make conditionals, and use for-in, for, while, and repeat-while to make loops
 
-//if
+// if condition
 let individualScores = [1,2,4,8,11]
 var teamScore = 0
 for score in individualScores {
-    //在if语句中，条件必须是一个布尔表达式——这意味着像if score { ... }这样的代码将报错，而不会隐形地与 0 做对比。
     if score > 4 {
         teamScore += 3
     } else {
@@ -66,12 +63,11 @@ for score in individualScores {
 print(teamScore)
 
 var optionalString: String? = "hello"
-print(optionalString == nil)
+optionalString == nil
 
 var optionalName: String? = "john"
 var greeting = "hello!"
 
-//如果变量的可选值是nil，条件会判断为false，大括号中的代码会被跳过。如果不是nil，会将值赋给let后面的常量，这样代码块中就可以使用这个值了。
 if let name = optionalName {
     greeting = "Hello \(name)"
 } else {
@@ -83,41 +79,43 @@ let nickName: String? = nil
 let fullName: String = "John More"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 
-//swith 
+//swith condition
 let vegetable = "red pepper"
-// 运行switch中匹配到的子句之后，程序会退出switch语句，并不会继续向下运行，所以不需要在每个子句结尾写break。
 switch vegetable {
 case "celery" :
     print("Add some raisins and make ants on a log.")
 case "cucumber", "watercress":
     print("That would make a good tea sandwich.")
-// 注意let在上述例子的等式中是如何使用的，它将匹配等式的值赋给常量x。
 case let x where x.hasSuffix("pepper"):
     print("Is it a spicy \(x)?")
 default:
     print("Everything tastes good in soup.")
 }
 
-//for
+// for
 let interestingNumbers = [
     "Prime": [2, 3, 5, 7, 11, 13],
     "Fibonacci": [1, 1, 2, 3, 5, 8],
     "Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
+var sum = 0
+var type: String?
 for (kind, numbers) in interestingNumbers {
     for number in numbers {
         if number > largest {
             largest = number
+            sum += number
+            type = kind
         }
     }
 }
 
 print(largest)
+sum
+type
 
-//warning:TODO 练习： 添加另一个变量来记录现在和之前最大数字的类型。
-
-//while
+// while
 var n = 2
 while n < 100 {
     n = n * 2
@@ -130,7 +128,7 @@ repeat {
 } while m < 100
 print(m)
 
-// 你可以在循环中使用..<来表示范围，也可以使用传统的写法 ,使用..<创建的范围不包含上界，如果想包含的话需要使用...
+// for
 var firstLoop = 0
 for i in 0..<4 {
     firstLoop += i
@@ -143,14 +141,16 @@ for var i = 0; i < 4; ++i {
 }
 print(secondLoop)
 
-//函数和闭包
-//使用func来声明一个函数，使用名字和参数来调用函数。使用->来指定函数返回值的类型。
+
+//===============================
+//     Functions and Closures
+//===============================
 func greet(name: String, eatWhat: String) -> String {
     return "Hello \(name), We eat \(eatWhat) today ."
 }
 greet("Bob", eatWhat: "vegetable")
 
-//使用元组来让一个函数返回多个值。该元组的元素可以用名称或数字来表示。
+// tuple
 func caculateStatisics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
     var min = scores[0]
     var max = scores[0]
@@ -172,7 +172,7 @@ print(statistics.max)
 print(statistics.sum)
 print(statistics.1)
 
-//函数可以带有可变个数的参数，这些参数在函数内表现为数组的形式
+// Functions can also take a variable number of arguments,collecting them into an array
 func sumOf(numbers: Int...) -> Int {
     var sum = 0
     for number in numbers {
@@ -184,7 +184,7 @@ func sumOf(numbers: Int...) -> Int {
 sumOf()
 sumOf(123,432, 16)
 
-//练习： 写一个计算参数平均值的函数。
+// Expriment: Write a function that calculates the average of its arguments.
 func avgParam (numbers: Int...) ->Int {
     var avg = 0
     for number in numbers {
@@ -196,7 +196,7 @@ func avgParam (numbers: Int...) ->Int {
 avgParam(0)
 avgParam(4,90)
 
-//函数可以嵌套。被嵌套的函数可以访问外侧函数的变量，你可以使用嵌套函数来重构一个太长或者太复杂的函数。
+// Functions can be nested. Nested functions have access to variables that were declared in the outer function. You can use nested functions to organize the code in a function that is long or complex.
 func returnFifteen() ->Int {
     var y = 10
     func add () {
@@ -207,7 +207,7 @@ func returnFifteen() ->Int {
 }
 returnFifteen()
 
-//函数是第一等类型，这意味着函数可以作为另一个函数的返回值。
+// Functions are a first-class type. This means that a function can return another function as its value.
 func makeInCrementer() -> ((Int) -> Int) {
     func addOne(number: Int) -> Int {
         return 1 + number
@@ -215,10 +215,10 @@ func makeInCrementer() -> ((Int) -> Int) {
     return addOne
 }
 
-var  increment = makeInCrementer()
+var increment = makeInCrementer()
 increment(7)
 
-//函数也可以当做参数传入另一个函数。
+// A function can take another function as one of its arguments.
 func hasAnyMatches(list:[Int], condition: (Int) -> Bool) -> Bool {
     for item in list {
         if condition(item) {
@@ -241,7 +241,7 @@ numbers.map({
     return result
 })
 
-//重写闭包，对所有奇数返回0。
+// TODO: 重写闭包，对所有奇数返回0。
 
 //有很多种创建更简洁的闭包的方法。如果一个闭包的类型已知，比如作为一个回调函数，你可以忽略参数的类型和返回值。单个语句闭包会把它语句的值当做结果返回。
 let mappedNumbers = numbers.map({ number in 3 * number })
@@ -250,7 +250,9 @@ print(mappedNumbers)
 let sortedNumbers = numbers.sort { $0 > $1 }
 print(sortedNumbers)
 
-// 对象和类
+//=========================
+//   Objects and Classes
+//=========================
 class Shape {
     var numberOfSides = 0
     func simpleDescription() -> String {
@@ -268,8 +270,6 @@ class NamedShape {
     init(name: String) {
         self.name = name
     }
-    
-    //如果你需要在删除对象之前进行一些清理工作，使用deinit创建一个析构函数。
     
     func simpleDescription() -> String {
         return "\(self.name) shape with \(numberOfSides) sides"
@@ -331,7 +331,9 @@ print(triangle.perimeter)
 triangle.perimeter = 9.9
 print(triangle.sideLength)
 
-// 枚举和结构体
+//=================================
+//   Enumerations and Structures
+//=================================
 enum Rank: Int {
     case Ace = 1
     case Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
