@@ -1,10 +1,6 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
-
-var str = "Hello, playground"
-
-/****** 函数的定义与调用 ******/
+//====================================
+//   Defining and Calling Functions
+//====================================
 func sayHello(personName: String) -> String {
     let greeting = "Hello, " + personName + "!"
     return greeting
@@ -18,15 +14,17 @@ func sayHelloAgain(personName: String) -> String {
 
 print(sayHelloAgain("Anna"))
 
-/****** 函数参数与返回值 ******/
-// 无参函数
+//============================================
+//   Function Parameters and Return Values
+//============================================
+
+// Function Without Parameters
 func sayHelloWorld() -> String {
     return "hello, world"
 }
 print(sayHelloWorld())
-// prints "hello, world"
 
-// 多参数函数
+// Funcionts With Multiple Parameters
 func sayHello(personName: String, alreadyGreeted: Bool) -> String {
     if alreadyGreeted {
         return sayHelloAgain(personName)
@@ -37,16 +35,13 @@ func sayHello(personName: String, alreadyGreeted: Bool) -> String {
 print(sayHello("Tim", alreadyGreeted: true))
 
 
-// 无返回值函数
-
-// 严格上来说，虽然没有返回值被定义，sayGoodbye(_:) 函数依然返回了值。没有定义返回类型的函数会返回特殊的值，叫 Void。它其实是一个空的元组（tuple），没有任何元素，可以写成()。
-func sayGoodbye(personName: String) {
+// Functions without Return Values
+func sayGoodbye(personName: String) { // return null tuple
     print("Goodbye, \(personName)!")
 }
 sayGoodbye("Dave")
-// prints "Goodbye, Dave!"
 
-// 多重返回值函数
+// Functions with Multiple Return Values
 func minMax(array: [Int]) -> (min: Int, max: Int) {
     var currentMin = array[0]
     var currentMax = array[1]
@@ -64,12 +59,7 @@ let bounds = minMax([8, -6, 2, 109, 3, 71])
 print("min is \(bounds.min) and max is \(bounds.max)")
 
 
-// 可选元组返回类型
-/* 如果函数返回的元组类型有可能整个元组都“没有值”，你可以使用可选的（Optional） 元组返回类型反映整个元组可以是nil的事实。你可以通过在元组类型的右括号后放置一个问号来定义一个可选元组，例如(Int, Int)?或(String, Int, Bool)?
-  可选元组类型如(Int, Int)?与元组包含可选类型如(Int?, Int?)是不同的.可选的元组类型，整个元组是可选的，而不只是元组中的每个元素值。
-
- */
-
+// Optional Tuple Return Types
 func minMax1(array: [Int]) -> (min: Int, max: Int)? {
     if array.isEmpty { return nil }
     var currentMin = array[0]
@@ -81,18 +71,16 @@ func minMax1(array: [Int]) -> (min: Int, max: Int)? {
             currentMax = value
         }
     }
-    
     return (currentMin, currentMax)
 }
-
 
 if let bounds1 = minMax1([8, -6, 2, 109, 3, 71]) {
     print("min is \(bounds1.min) and max is \(bounds1.max)")
 }
-// prints "min is -6 and max is 109"
 
-
-/****** 函数参数名称 ******/
+//==============================
+//   Function Parameter Names
+//==============================
 
 /*
   函数参数都有一个外部参数名（external parameter name）和一个局部参数名（local parameter name）。外部参数名用于在函数调用时标注传递给函数的参数，局部参数名在函数的实现内部使用。
@@ -123,16 +111,14 @@ func sayHello(to person: String, and anotherPerson: String) -> String {
 print(sayHello(to: "Bill", and: "Ted"))
 
 
-//忽略外部参数名
-
-// 如果你不想为第二个及后续的参数设置外部参数名，用一个下划线（_）代替一个明确的参数名。
+// Omitting External Parameter Names
 func someFuction(firstParameterName: Int, _ secondParameterName: Int) {
     print("\(firstParameterName) + \(secondParameterName)")
 }
 
 someFuction(1, 2)
 
-// 默认参数值
+// Default Parameter Values
 func somFunction(parameterWithDefault: Int = 12) {
     print("\(parameterWithDefault)")
 }
@@ -140,7 +126,7 @@ func somFunction(parameterWithDefault: Int = 12) {
 //somFunction(6)
 somFunction()
 
-// 可变参数
+// Variadic Parameters
 
 // 一个函数最多只能有一个可变参数。 如果函数有一个或多个带默认值的参数，而且还有一个可变参数，那么把可变参数放在参数表的最后。
 func arithmeticMean(numbers: Double...) -> Double {
@@ -156,7 +142,7 @@ arithmeticMean(1, 2, 3, 4, 5)
 arithmeticMean(3, 8.25, 18.75)
 
 
-// 常量参数和变量参数
+// Constant and Variable Parameters
 
 /*
  函数参数默认是常量。试图在函数体中更改参数值将会导致编译错误。这意味着你不能错误地更改参数值。
@@ -183,7 +169,7 @@ let originalString = "hello"
 let paddedString = alignRight(originalString, totalLength: 10, pad: "-")
 
 
-// 输入输出参数
+// In-Out Parameters
 
 /*
 变量参数，正如上面所述，仅仅能在函数体内被更改。如果你想要一个函数可以修改参数的值，并且想要在这些修改在函数调用结束后仍然存在，那么就应该把这个参数定义为输入输出参数（In-Out Parameters）。
@@ -218,10 +204,11 @@ func multiplyTwoInts(a: Int, _ b: Int) -> Int {
     return a * b
 }
 
+//====================
+//   Function Types
+//====================
 
-/****** 函数类型 ******/
-
-// 使用函数类型
+// Using Function Types
 
 /*
  这个可以解读为：
@@ -235,7 +222,7 @@ var mathFunction: (Int, Int) -> Int = multiplyTwoInts
 print("Result: \(mathFunction(2,3))")
 
 
-// 函数类型作为参数类型
+// Function Types as Parameters Types
 /*
   你可以用(Int, Int) -> Int这样的函数类型作为另一个函数的参数类型。这样你可以将函数的一部分实现留给函数的调用者来提供。
  */
@@ -255,7 +242,7 @@ func printMathResult(mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
 printMathResult(multiplyTwoInts, 3, 5)
 
 
-// 函数类型作为返回类型
+// Function Types as return types
 /*
   你可以用函数类型作为另一个函数的返回类型。你需要做的是在返回箭头（->）后写一个完整的函数类型。
  */
@@ -283,8 +270,9 @@ while currentValue != 0 {
 
 print("zero!")
 
-
-/****** 嵌套函数 ******/
+//======================
+//   Nested Functions
+//======================
 
 /*
  这章中你所见到的所有函数都叫全局函数（global functions），它们定义在全局域中。你也可以把函数定义在别的函数体中，称作嵌套函数（nested functions）。

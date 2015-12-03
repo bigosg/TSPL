@@ -1,9 +1,3 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
-
-var str = "Hello, playground"
-
 /*
  - 闭包是自包含的函数代码块，可以在代码中被传递和使用。Swift 中的闭包与 C 和 Objective-C 中的代码块（blocks）以及其他一些编程语言中的匿名函数比较相似。
 
@@ -22,7 +16,10 @@ var str = "Hello, playground"
     *尾随（Trailing）闭包语法
  */
 
-/****** 闭包表达式 ******/
+//===============
+//   闭包表达式
+//===============
+
 // sort 方法
 let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
 func backwards(s1: String, s2: String) -> Bool {
@@ -56,7 +53,10 @@ print("\(reversed)")
 /* 实际上还有一种更简短的方式来撰写上面例子中的闭包表达式。 */
 reversed = names.sort(>)
 
-/****** 尾随闭包 (Trailing Closures) ******/
+//=================================
+//   尾随闭包 (Trailing Closures)
+//=================================
+
 func someFunctionThatTakesAClousure(closure: () -> Void) {
     // 函数体部分
 }
@@ -98,7 +98,9 @@ let strings = numbers.map {
 }
 print("\(strings)")
 
-// 捕获值 (Capturing Values)
+//============================
+//  捕获值 (Capturing Values)
+//============================
 
 /*
   嵌套函数incrementor()从上下文中捕获了两个值，runningTotal和amount。捕获这些值之后，makeIncrementor将incrementor作为闭包返回。每次调用incrementor时，其会以amount作为增量增加runningTotal的值。
@@ -136,8 +138,10 @@ incrementBySeven()
 // 再次调用原来的incrementByTen会在原来的变量runningTotal上继续增加值，该变量和incrementBySeven中捕获的变量没有任何联系
 incrementByTen()
 
+//==================
+//   闭包是引用类型
+//==================
 
-/****** 闭包是引用类型 ******/
 /*
  上面的例子中，incrementBySeven和incrementByTen是常量，但是这些常量指向的闭包仍然可以增加其捕获的变量的值。这是因为函数和闭包都是引用类型。
 
@@ -149,8 +153,10 @@ let alsoInCrementByTen = incrementByTen
 alsoInCrementByTen()
 
 
+//===============
+//   非逃逸闭包
+//===============
 
-/****** 非逃逸闭包 ******/
 /*
   当一个闭包作为参数传到一个函数中，但是这个闭包在函数返回之后才被执行，我们称该闭包从函数中逃逸。当你定义接受闭包作为参数的函数时，你可以在参数名之前标注@noescape，用来指明这个闭包是不允许“逃逸”出这个函数的。将闭包标注@noescape能使编译器知道这个闭包的生命周期（译者注：闭包只能在函数体中被执行，不能脱离函数体执行，所以编译器明确知道运行时的上下文），从而可以进行一些比较激进的优化。
  */
@@ -186,8 +192,10 @@ print(instance.x)
 completionHandlers.first?()
 print(instance.x)
 
+//=============
+//   自动闭包
+//=============
 
-/****** 自动闭包 ******/
 /*
   自动闭包是一种自动创建的闭包，用于包装传递给函数作为参数的表达式。这种闭包不接受任何参数，当它被调用的时候，会返回被包装在其中的表达式的值。这种便利语法让你能够用一个普通的表达式来代替显式的闭包，从而省略闭包的花括号。
 

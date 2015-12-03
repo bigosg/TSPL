@@ -1,10 +1,6 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
-
-var str = "Hello, playground"
-
-/****** 枚举语法 ******/
+//=============
+//   枚举语法
+//=============
 enum someEnumeration {
     // 枚举定义放在这里
 }
@@ -30,8 +26,9 @@ var directionToHead = CompassPoint.West
  */
 directionToHead  = .West
 
-
-/****** 使用Switch 语句匹配枚举值 ******/
+//=============================
+//   使用Switch 语句匹配枚举值
+//=============================
 
 /*
     正如在控制流（Control Flow）中介绍的那样，在判断一个枚举类型的值时，switch语句必须穷举所有情况。如果忽略了.West这种情况，上面那段代码将无法通过编译，因为它没有考虑到CompassPoint的全部成员。强制穷举确保了枚举成员不会被意外遗漏。
@@ -50,7 +47,10 @@ case .West:
     print("Where the skies are blue")
 }
 
-/****** 关联值 ******/
+//===========
+//   关联值
+//===========
+
 enum Barcode {
     case UPCA(Int, Int, Int, Int)
     case QRCode(String)
@@ -77,8 +77,10 @@ case let .QRCode(productCode):
 }
 // 输出 "QR code: ABCDEFGHIJKLMNOP."
 
+//===========
+//   原始值
+//===========
 
-/****** 原始值 ******/
 enum ASCIIControlCharacter: Character {
     case Tab = "\t"
     case LineFeed = "\n"
@@ -120,8 +122,10 @@ if let somePlanet = Planet2(rawValue: positionToFind) {
     print("There isn't a planet at position \(positionToFind)")
 }
 
+//=============
+//   递归枚举
+//=============
 
-/****** 递归枚举 ******/
 /*
   递归枚举（recursive enumeration）是一种枚举类型，它有一个或多个枚举成员使用该枚举类型的实例作为关联值。使用递归枚举时，编译器会插入一个间接层。你可以在枚举成员前加上indirect来表示该成员可递归
  */
