@@ -210,7 +210,10 @@ if let definiteString = assumeString {
     print(definiteString)
 }
 
-// Error Handling
+//====================
+//   Error Handling
+//====================
+
 func canThrowAnError() throws {
     
 }
