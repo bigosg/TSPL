@@ -455,7 +455,7 @@ var b = SimpleStructure()
 b.adjust()
 let bDescription = b.simpleDescription
 
-// 练习： 写一个实现这个协议的枚举。
+// EXPERIMENT：Write an enumeration that conforms to this protocol.
 
 extension Int: ExampleProtocol {
     var simpleDescription: String {
@@ -467,7 +467,7 @@ extension Int: ExampleProtocol {
 }
 print(7.simpleDescription)
 
-// 练习： 给Double类型写一个扩展，添加absoluteValue功能。
+// EXPERIMENT：Write an extension for the Double type that adds an absoluteValue property.
 extension Double {
     var absoluteValueDescription: String {
         return "The number \(self)"
