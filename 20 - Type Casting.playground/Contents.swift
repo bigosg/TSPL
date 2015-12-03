@@ -1,7 +1,7 @@
 
-//========================
-//   定义一个类层次作为例子
-//========================
+//=========================================
+//   Defining a Class Hierarchy for Type
+//=========================================
 class MediaItem {
     var name: String
     init(name: String) {
@@ -33,9 +33,9 @@ let library = [
     Song(name: "Never Gonna Give You Up", artist: "Rick Astley")
 ]
 
-//=============
-//   检查类型
-//=============
+//===================
+//   Checking Type
+//===================
 var movieCount = 0
 var songCount = 0
 for item in library {
@@ -48,9 +48,9 @@ for item in library {
 
 print("Media library contains \(movieCount) movies and \(songCount) songs")
 
-//=============
-//   向下转型
-//=============
+//=================
+//   Downcasting
+//=================
 for item in library {
     if let movie = item as? Movie {
         print("Movie: '\(movie.name), dir.\(movie.director)'")
@@ -59,9 +59,9 @@ for item in library {
     }
 }
 
-//============================
-//   Any和AnyObject的类型转换
-//============================
+//========================================
+//   Type Casting for Any and AnyObject
+//========================================
 
 /*
   - AnyObject 可以表示任何类型的实例
