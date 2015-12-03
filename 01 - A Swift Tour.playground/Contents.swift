@@ -50,7 +50,7 @@ print(occupation)
 
 // Use if and switch to make conditionals, and use for-in, for, while, and repeat-while to make loops
 
-// if condition
+// if
 let individualScores = [1,2,4,8,11]
 var teamScore = 0
 for score in individualScores {
@@ -79,7 +79,7 @@ let nickName: String? = nil
 let fullName: String = "John More"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 
-//swith condition
+//swith
 let vegetable = "red pepper"
 switch vegetable {
 case "celery" :
@@ -150,7 +150,7 @@ func greet(name: String, eatWhat: String) -> String {
 }
 greet("Bob", eatWhat: "vegetable")
 
-// tuple
+// tuple return
 func caculateStatisics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
     var min = scores[0]
     var max = scores[0]
@@ -241,9 +241,6 @@ numbers.map({
     return result
 })
 
-// TODO: 重写闭包，对所有奇数返回0。
-
-//有很多种创建更简洁的闭包的方法。如果一个闭包的类型已知，比如作为一个回调函数，你可以忽略参数的类型和返回值。单个语句闭包会把它语句的值当做结果返回。
 let mappedNumbers = numbers.map({ number in 3 * number })
 print(mappedNumbers)
 
@@ -315,10 +312,14 @@ class EquilateralTriangle: NamedShape {
         get {
             return 3.0 * sideLength
         }
-        //在perimeter的 setter 中，新值的名字是newValue。你可以在set之后显式的设置一个名字。
-        set {
-            sideLength = newValue * 3.0
+        
+        set (customNewValue){
+            sideLength = customNewValue * 3.0
         }
+        
+//        set {
+//            sideLength = newValue * 3.0
+//        }
     }
     
     override func simpleDescription() -> String {
@@ -354,16 +355,16 @@ enum Rank: Int {
     }
 }
 
-// 在上面的例子中，枚举原始值的类型是Int，所以你只需要设置第一个原始值。剩下的原始值会按照顺序赋值。你也可以使用字符串或者浮点数作为枚举的原始值。使用rawValue属性来访问一个枚举成员的原始值。
+// the raw-value type of the enumeration is Int, so you only have to specify the first raw value. The rest of the raw values are assigned in order. You can also use strings or floating-point numbers as the raw type of an enumeration.
 let ace = Rank.Ace
 let aceRawValue = ace.rawValue
 
-// 使用init?(rawValue:)初始化构造器在原始值和枚举值之间进行转换。
+// Use the init?(rawValue:) initializer to make an instance of an enumeration from a raw value.
 if let convertedRank = Rank(rawValue: 3) {
     let threeDescription = convertedRank.simpleDescription()
 }
 
-// 枚举的成员值是实际值，并不是原始值的另一种表达方法。实际上，以防原始值没有意义，你不需要设置。
+// The case values of an enumeration are actual values, not just another way of writing their raw values. In fact, in cases where there isn’t a meaningful raw value, you don’t have to provide one.
 enum Suit {
     case Spades, Hearts, Diamonds, Clubs
     func simpleDescription() -> String {
@@ -379,7 +380,7 @@ enum Suit {
         }
     }
     
-    // 注意，有两种方式可以引用Hearts成员：给hearts常量赋值时，枚举成员Suit.Hearts需要用全名来引用，因为常量没有显式指定类型。在switch里，枚举成员使用缩写.Hearts来引用，因为self的值已经知道是一个suit。已知变量类型的情况下你可以使用缩写。
+    //  EXPERIMENT: Add a color() method to Suit that returns “black” for spades and clubs, and returns “red” for hearts and diamonds.
     func color() -> String {
         switch self {
         case .Spades, .Clubs:
@@ -389,11 +390,15 @@ enum Suit {
         }
     }
 }
+
+// Notice the two ways that the Hearts case of the enumeration is referred to above: When assigning a value to the hearts constant, the enumeration case Suit.Hearts is referred to by its full name because the constant doesn’t have an explicit type specified. Inside the switch, the enumeration case is referred to by the abbreviated form .Hearts because the value of self is already known to be a suit. You can use the abbreviated form anytime the value’s type is already known.
+
 let hearts = Suit.Hearts
 let heartsDescription = hearts.simpleDescription()
 let heartsColor = hearts.color()
 
-// 使用struct来创建一个结构体。结构体和类有很多相同的地方，比如方法和构造器。它们之间最大的一个区别就是结构体是传值，类是传引用。
+
+// Use struct to create a structure. Structures support many of the same behaviors as classes, including methods and initializers. One of the most important differences between structures and classes is that structures are always copied when they are passed around in your code, but classes are passed by reference.
 struct Card {
     var rank: Rank
     var suit: Suit
@@ -421,7 +426,9 @@ case let .Error(error):
     let serverResponse = "Failure... \(error)"
 }
 
-/****** 协议和扩展 ******/
+//================================
+//    Protocol and Extensions
+//================================
 protocol ExampleProtocol {
     var simpleDescription: String {get}
     mutating func adjust()
@@ -479,8 +486,10 @@ var doub2 = Double(3.7)
 doub2.absolute()
 print(doub2.absoluteValueDescription)
 
-/****** 泛型 ******/
-//在尖括号里写一个名字来创建一个泛型函数或者类型。
+//==============
+//   Generics
+//==============
+
 func repeatItem<Item>(item:Item, numberOfTimes: Int) -> [Item] {
     var result = [Item]()
     for _ in 0..<numberOfTimes {
@@ -490,7 +499,6 @@ func repeatItem<Item>(item:Item, numberOfTimes: Int) -> [Item] {
 }
 repeatItem("Knock", numberOfTimes: 4)
 
-// 你也可以创建泛型函数、方法、类、枚举和结构体。
 enum OptionalValue<Wrapped> {
     case NONE
     case Some(Wrapped)
