@@ -1,2 +1,2 @@
-# swift-2.1-release
+# swift-2.2-release
 Learning Swift Language.
