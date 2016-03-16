@@ -1,10 +1,15 @@
 
 var str = "Hello, playground"
 print(str)
+print("Hello world!")
 
 //===========================
 //       Simple Values
 //===========================
+
+var myVariable = 42
+myVariable = 50
+let myConstant = 42
 
 let myIntConstant = 50
 
@@ -14,14 +19,19 @@ let myExplicitDoubleConstant:Double = 50.00
 
 let mFloatConstant:Float = 50.000
 
+let mExFloatConstant:Float = 4
+
 let label = "The width is "
 let width = 95
 let widthLabel = label + String(width)
+
+// let widthLabel1 = label + width
 
 let apples = 3
 let orange = 5
 let appleSummary = "I have \(apples) apples"
 let fruitSummary = "I have \(apples + orange) pieces of fruit."
+
 
 // Array
 var shoppingList = ["apple","food","vagetable"]
@@ -63,7 +73,7 @@ for score in individualScores {
 print(teamScore)
 
 var optionalString: String? = "hello"
-optionalString == nil
+print(optionalString == nil)
 
 var optionalName: String? = "john"
 var greeting = "hello!"
@@ -136,7 +146,7 @@ for i in 0..<4 {
 print(firstLoop)
 
 var secondLoop = 0
-for var i = 0; i < 4; ++i {
+for var i = 0; i < 4;  i++ {
     secondLoop  += i
 }
 print(secondLoop)
@@ -194,7 +204,7 @@ func avgParam (numbers: Int...) ->Int {
     return avg
 }
 avgParam(0)
-avgParam(4,90)
+avgParam(4,90,100)
 
 // Functions can be nested. Nested functions have access to variables that were declared in the outer function. You can use nested functions to organize the code in a function that is long or complex.
 func returnFifteen() ->Int {
@@ -217,6 +227,7 @@ func makeInCrementer() -> ((Int) -> Int) {
 
 var increment = makeInCrementer()
 increment(7)
+print(makeInCrementer()(7))
 
 // A function can take another function as one of its arguments.
 func hasAnyMatches(list:[Int], condition: (Int) -> Bool) -> Bool {
@@ -314,11 +325,11 @@ class EquilateralTriangle: NamedShape {
         }
         
         set (customNewValue){
-            sideLength = customNewValue * 3.0
+            sideLength = customNewValue / 3.0
         }
         
 //        set {
-//            sideLength = newValue * 3.0
+//            sideLength = newValue / 3.0
 //        }
     }
     
@@ -331,6 +342,31 @@ var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
 print(triangle.perimeter)
 triangle.perimeter = 9.9
 print(triangle.sideLength)
+
+class TriangleAndSquare {
+    var triangle: EquilateralTriangle {
+        willSet {
+            square.sideLength = newValue.sideLength
+        }
+    }
+    var square: Square {
+        willSet {
+            triangle.sideLength = newValue.sideLength
+        }
+    }
+    
+    init(size: Double, name: String) {
+        square = Square(sizeLength: size, name: name)
+        triangle = EquilateralTriangle(sideLength: size, name: name)
+    }
+}
+var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
+print(triangleAndSquare.square.sideLength)
+print(triangleAndSquare.triangle.sideLength)
+triangleAndSquare.square = Square(sizeLength: 50, name: "large square")
+print(triangleAndSquare.triangle.sideLength)
+let optionalSquare: Square? = Square(sizeLength: 2.5, name: "optional square")
+let sideLength = optionalSquare?.sideLength
 
 //=================================
 //   Enumerations and Structures
@@ -355,9 +391,11 @@ enum Rank: Int {
     }
 }
 
-// the raw-value type of the enumeration is Int, so you only have to specify the first raw value. The rest of the raw values are assigned in order. You can also use strings or floating-point numbers as the raw type of an enumeration.
+// the raw-value type of the enumeration is Int, so you only have to specify the first raw value. By default, Swift assgins the raw values Staring at zero and incrementing by one each time, The rest of the raw values are assigned in order. You can also use strings or floating-point numbers as the raw type of an enumeration.
 let ace = Rank.Ace
 let aceRawValue = ace.rawValue
+let jack = Rank.Jack
+let jackRawValue = jack.rawValue
 
 // Use the init?(rawValue:) initializer to make an instance of an enumeration from a raw value.
 if let convertedRank = Rank(rawValue: 3) {
@@ -518,3 +556,57 @@ func anyCommonElements <T: SequenceType, U: SequenceType where T.Generator.Eleme
 }
 
 anyCommonElements([1, 2, 3], [3])
+
+//====================
+//   Error Handling
+//====================
+enum PrintError: ErrorType {
+    case OutOfPaper
+    case NoToner
+    case Onfire
+}
+
+func sendToPrinter(printerName: String) throws -> String {
+    if printerName == "Never Has Toner" {
+        throw PrintError.NoToner
+    }
+    return "Job sent"
+}
+
+do {
+    let printerResponse = try sendToPrinter("Never Has Toner")
+    print(printerResponse)
+} catch {
+    print(error)
+}
+
+do {
+    let printerResponse = try sendToPrinter("Gutenberg")
+    print(printerResponse)
+} catch  PrintError.Onfire {
+    print("I'll just put this over here, with the rest of fire.")
+} catch let printerError as PrintError {
+    print("Printer error: \(printerError).")
+} catch {
+    print(error)
+}
+
+let printerSuccess = try? sendToPrinter("Mergenthaler")
+let printerFailure = try? sendToPrinter("Never Has Toner")
+
+var teaKettleHeating = false
+func morningRoutine() throws {
+    teaKettleHeating = true
+    defer {
+        teaKettleHeating = false
+    }
+    
+    _ = try sendToPrinter("lanston")
+}
+
+
+
+
+
+
+
