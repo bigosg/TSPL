@@ -597,12 +597,23 @@ let printerFailure = try? sendToPrinter("Never Has Toner")
 var teaKettleHeating = false
 func morningRoutine() throws {
     teaKettleHeating = true
+    print("11111")
+    print(teaKettleHeating)
     defer {
+        
         teaKettleHeating = false
+        print("33333")
+        print(teaKettleHeating)
     }
-    
-    _ = try sendToPrinter("lanston")
+    print("22222")
+    _ = try sendToPrinter("Never Has Toner")
 }
+
+try morningRoutine()
+
+
+
+
 
 
 

@@ -2,22 +2,29 @@
 //=============================
 //   Constants and Varuables
 //=============================
+
+// Declaring Constants and Variables
 let maximumNumberOfLoginAttempts = 10
 var currentLoginAttempt = 0
 
 var x = 0.0, y = 0.0, z = 0.0
 
+// Type Annotations
 var welcomeMessage: String
 welcomeMessage = "Hello"
 
 var red, green, blue: Double
 
+// Naming Constants and Variables
 let π = 3.14159
 let 你好 = "你好世界"
 let 🐶🐮 = "dogcow"
 
 var languageName = "Swift"
 languageName = "Swift++"
+
+// priting Constants and Variables
+print(languageName)
 
 
 //==============
@@ -35,7 +42,7 @@ print("The current value of friendlyWelcome is \(languageName)")
 
 
 //================
-//   Senucolons
+//   Semicolons
 //================
 let cat = "🐱"; print(cat)
 // 输出 "🐱"
@@ -181,10 +188,10 @@ if convertedNumber != nil {
 }
 
 if convertedNumber != nil {
-    print("convertedNumber has an integer value of \(convertedNumber!)") // Trying to use ! to access a non-existent optional value triggers a runtime error. Always make sure that an optional contains a non-nil value before using ! to force-unwrap its value.
+    print("convertedNumber has an integer value of \(convertedNumber!)") // Trying to use ! to access a non-existent optional value triggers a runtime error. Always make sure that an optional contains a non-nil value before using ! to force-unwrap its value. (可选值的强制解析)
 }
 
-// Optional Binding
+// Optional Binding (可选绑定)
 if let actualNumber = Int(possibleNumber) {
     print("\'\(possibleNumber)\' has an integer value of \(actualNumber)")
 } else {
@@ -195,7 +202,7 @@ if let firstNumber = Int("4"), secondNumber = Int("42") where firstNumber < seco
     print("\(firstNumber) < \(secondNumber)")
 }
 
-// Implicitly Unwrapped Optionals
+// Implicitly Unwrapped Optionals (隐式解析可选类型)
 let possibleString: String? = "An optional string."
 let forcedString: String = possibleString!
 

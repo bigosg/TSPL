@@ -27,12 +27,12 @@ for (animalName, legCount) in numberOfLegs {
 }
 
 // For
-for var index = 0; index < 3; ++index {
+for index in 0 ..< 3 {
     print("index is \(index)")
 }
 
-var index: Int
-for index = 0; index < 3; ++index {
+var index: Int = 0
+for index in 0 ..< 3 {
     print("index is \(index)")
 }
 
@@ -51,26 +51,27 @@ board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
 
 var square = 0
 var diceRoll = 0
-while square < finalSquare {
-    if ++diceRoll == 7 {diceRoll = 1}
-    square += diceRoll
-    if square < board.count {
-        square += board[square]
-    }
-}
-print("Game over")
+//while square < finalSquare {
+//    diceRoll += 1
+//    if diceRoll == 7 {diceRoll = 1}
+//    square += diceRoll
+//    if square < board.count {
+//        square += board[square]
+//    }
+//}
+//print("Game over")
 
 // Repeat-While
 
-/*
 repeat {
     square += board[square]
-    if ++diceRoll == 7 {diceRoll = 1}
+    diceRoll += 1
+    if diceRoll == 7 {diceRoll = 1}
     square += diceRoll
 } while square < finalSquare
 
 print("Game over!")
-*/
+
 
 //============================
 //   Conditional Statements
