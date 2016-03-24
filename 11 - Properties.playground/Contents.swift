@@ -17,7 +17,7 @@ rangeOfThreeItems.firstValue = 6
 // NOTE: You cannot modify variable properties on constant structs b/c they
 // are value types. Classes behave differently since they are reference types
 let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
-rangeOfThreeItems.firstValue = 6 // // reports error b/c properties are also constant
+//rangeOfFourItems.firstValue = 6 // // reports error b/c properties are also constant
 
 // 延迟存储属性 (Lazy Stored Properties)
 // NOTE: 延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用lazy来标示一个延迟存储属性。

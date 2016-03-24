@@ -16,9 +16,9 @@
     *尾随（Trailing）闭包语法
  */
 
-//===============
-//   闭包表达式
-//===============
+//===================================
+//   Closure Expreesions 闭包表达式
+//===================================
 
 // sort 方法
 let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
@@ -49,7 +49,7 @@ print("\(reversed)")
 reversed = names.sort({ $0 > $1 })
 print("\(reversed)")
 
-// 运算符函数
+// 运算符函数(Opreator Functions)
 /* 实际上还有一种更简短的方式来撰写上面例子中的闭包表达式。 */
 reversed = names.sort(>)
 
@@ -79,14 +79,15 @@ reversed = names.sort { $0 > $1 }
 
 
 let digitNames = [
-    0: "Zero", 1: "One", 2: "Two",   3: "Three", 4: "Four",
+    0: "", 1: "One", 2: "Two",   3: "Three", 4: "Four",
     5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
 ]
 let numbers = [16, 58, 510]
 
 let strings = numbers.map {
-    (var number) -> String in
+    (number) -> String in
     var output = ""
+    var number = number
     while number > 0 {
         /*
           字典digitNames下标后跟着一个叹号（!），因为字典下标返回一个可选值（optional value），表明该键不存在时会查找失败。在上例中，由于可以确定number % 10总是digitNames字典的有效下标，因此叹号可以用于强制解包 (force-unwrap) 存储在下标的可选类型的返回值中的String类型的值。

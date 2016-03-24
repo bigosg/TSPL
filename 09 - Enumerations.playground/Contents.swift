@@ -96,6 +96,8 @@ enum CompassPoint1: String {
     case North, South, East, West
 }
 
+let ascii = ASCIIControlCharacter.LineFeed.rawValue
+
 let earthOrder = Planet2.Earth.rawValue
 
 let sunsetDirection = CompassPoint1.West.rawValue
