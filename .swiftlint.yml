@@ -4,12 +4,12 @@ disabled_rules: # rule identifiers to exclude from running
 # - comma
 
 included: # paths to include during linting. `--path` is ignored if present. takes precendence over `excluded`.
-  - BigoLive
+  # - BigoLive
 excluded: # paths to ignore during linting. overridden by `included`.
-  - Carthage
-  - Pods
-  - Source/ExcludedFolder
-  - Source/ExcludedFile.swift
+  # - Carthage
+  # - Pods
+  # - Source/ExcludedFolder
+  # - Source/ExcludedFile.swift
 
 force_cast: warning # implicitly
 force_try:
