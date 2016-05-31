@@ -96,7 +96,7 @@ class SurveyQuestion1 {
     let text: String
     var response: String?
     init(text: String) {
-        self.text = text
+        self.text = text  // 存储属性不初始化会报错。
     }
     func ask() {
         print(text)
@@ -135,6 +135,7 @@ twoByTwo.height
 //=====================
 /*
   构造器可以通过调用其它构造器来完成实例的部分构造过程。这一过程称为构造器代理，它能减少多个构造器间的代码重复。
+  在 Effective Java 中可以提到可以采用 Builder模式来实现构造器代理。
  */
 struct Point {
     var x = 0.0, y = 0.0
@@ -218,4 +219,3 @@ convenience init(parameters: String ) {
 //===============================
 //   通过闭包或函数设置属性的默认值
 //===============================
-

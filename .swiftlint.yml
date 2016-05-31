@@ -1,7 +1,8 @@
 disabled_rules: # rule identifiers to exclude from running
 - trailing_whitespace
-# - colon
-# - comma
+- colon
+- comma
+- variable_name
 
 included: # paths to include during linting. `--path` is ignored if present. takes precendence over `excluded`.
   # - BigoLive
@@ -21,11 +22,11 @@ line_length: 300
 type_body_length:
   - 300 # warning
   - 400 # error
-# parameterized rules are first parameterized as a warning level, then error level.
-variable_name_max_length:
-  - 40 # warning
-  - 60 # error
-# parameterized rules are first parameterized as a warning level, then error level.
-variable_name_min_length:
-  - 3 # warning
-  - 2 # error
+# # parameterized rules are first parameterized as a warning level, then error level.
+# variable_name_max_length:
+#   - 40 # warning
+#   - 60 # error
+# # parameterized rules are first parameterized as a warning level, then error level.
+# variable_name_min_length:
+#   - 3 # warning
+#   - 2 # error

@@ -1,4 +1,3 @@
-
 var str = "Hello, playground"
 print(str)
 print("Hello world!")
@@ -15,11 +14,11 @@ let myIntConstant = 50
 
 let myImplicitDoubleConstant = 50.0
 
-let myExplicitDoubleConstant:Double = 50.00
+let myExplicitDoubleConstant: Double = 50.00
 
-let mFloatConstant:Float = 50.000
+let mFloatConstant: Float = 50.000
 
-let mExFloatConstant:Float = 4
+let mExFloatConstant: Float = 4
 
 let label = "The width is "
 let width = 95
@@ -61,7 +60,7 @@ print(occupation)
 // Use if and switch to make conditionals, and use for-in, for, while, and repeat-while to make loops
 
 // if
-let individualScores = [1,2,4,8,11]
+let individualScores = [1, 2, 4, 8, 11]
 var teamScore = 0
 for score in individualScores {
     if score > 4 {
@@ -192,7 +191,7 @@ func sumOf(numbers: Int...) -> Int {
 }
 
 sumOf()
-sumOf(123,432, 16)
+sumOf(123, 432, 16)
 
 // Expriment: Write a function that calculates the average of its arguments.
 func avgParam (numbers: Int...) ->Int {
@@ -204,7 +203,7 @@ func avgParam (numbers: Int...) ->Int {
     return avg
 }
 avgParam(0)
-avgParam(4,90,100)
+avgParam(4, 90, 100)
 
 // Functions can be nested. Nested functions have access to variables that were declared in the outer function. You can use nested functions to organize the code in a function that is long or complex.
 func returnFifteen() ->Int {
@@ -230,7 +229,7 @@ increment(7)
 print(makeInCrementer()(7))
 
 // A function can take another function as one of its arguments.
-func hasAnyMatches(list:[Int], condition: (Int) -> Bool) -> Bool {
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
     for item in list {
         if condition(item) {
             return true
@@ -239,7 +238,7 @@ func hasAnyMatches(list:[Int], condition: (Int) -> Bool) -> Bool {
     return false
 }
 
-func lessThanTen(number:Int) -> Bool {
+func lessThanTen(number: Int) -> Bool {
     return number < 10
 }
 
@@ -278,7 +277,7 @@ class NamedShape {
     init(name: String) {
         self.name = name
     }
-    
+
     func simpleDescription() -> String {
         return "\(self.name) shape with \(numberOfSides) sides"
     }
@@ -290,17 +289,17 @@ var namedShapeDescription  = namedShape.simpleDescription()
 
 class Square: NamedShape {
     var sideLength: Double
-    
+
     init(sizeLength: Double, name: String) {
         self.sideLength = sizeLength
         super.init(name: name)
         numberOfSides = 4
     }
-    
+
     func area() -> Double {
         return sideLength * sideLength
     }
-    
+
     override func simpleDescription() -> String {
         return "\(self.name) with side of  length \(sideLength)."
     }
@@ -312,27 +311,27 @@ test.simpleDescription()
 
 class EquilateralTriangle: NamedShape {
     var sideLength: Double = 0.0
-    
+
     init(sideLength: Double, name: String) {
         self.sideLength = sideLength
         super.init(name: name)
         numberOfSides = 3
     }
-    
+
     var perimeter: Double {
         get {
             return 3.0 * sideLength
         }
-        
-        set (customNewValue){
+
+        set customNewValue {
             sideLength = customNewValue / 3.0
         }
-        
+
 //        set {
 //            sideLength = newValue / 3.0
 //        }
     }
-    
+
     override func simpleDescription() -> String {
         return "An equilateral triagle with sides of length \(sideLength)."
     }
@@ -354,7 +353,7 @@ class TriangleAndSquare {
             triangle.sideLength = newValue.sideLength
         }
     }
-    
+
     init(size: Double, name: String) {
         square = Square(sizeLength: size, name: name)
         triangle = EquilateralTriangle(sideLength: size, name: name)
@@ -402,7 +401,9 @@ if let convertedRank = Rank(rawValue: 3) {
     let threeDescription = convertedRank.simpleDescription()
 }
 
-// The case values of an enumeration are actual values, not just another way of writing their raw values. In fact, in cases where there isn’t a meaningful raw value, you don’t have to provide one.
+/* The case values of an enumeration are actual values, not just another way of writing their raw values.
+In fact, in cases where there isn’t a meaningful raw value, you don’t have to provide one.
+*/
 enum Suit {
     case Spades, Hearts, Diamonds, Clubs
     func simpleDescription() -> String {
@@ -417,7 +418,7 @@ enum Suit {
             return "clubs"
         }
     }
-    
+
     //  EXPERIMENT: Add a color() method to Suit that returns “black” for spades and clubs, and returns “red” for hearts and diamonds.
     func color() -> String {
         switch self {
@@ -483,7 +484,7 @@ var a = SimpleClass()
 a.adjust()
 let aDescription = a.simpleDescription
 
-struct SimpleStructure: ExampleProtocol{
+struct SimpleStructure: ExampleProtocol {
     var simpleDescription: String = "A simple structure"
     mutating func adjust() {
         simpleDescription += "(adjusted)"
@@ -510,9 +511,9 @@ extension Double {
     var absoluteValueDescription: String {
         return "The number \(self)"
     }
-    
+
     mutating func absolute() {
-        if (self < 0) {
+        if self < 0 {
             self = -self
         }
     }
@@ -528,7 +529,7 @@ print(doub2.absoluteValueDescription)
 //   Generics
 //==============
 
-func repeatItem<Item>(item:Item, numberOfTimes: Int) -> [Item] {
+func repeatItem<Item>(item: Item, numberOfTimes: Int) -> [Item] {
     var result = [Item]()
     for _ in 0..<numberOfTimes {
         result.append(item)
@@ -544,7 +545,7 @@ enum OptionalValue<Wrapped> {
 var possibleInteger: OptionalValue<Int> = .NONE
 possibleInteger = .Some(100)
 
-func anyCommonElements <T: SequenceType, U: SequenceType where T.Generator.Element:Equatable, T.Generator.Element == U.Generator.Element> (lhs:T, _ rhs: U) -> Bool {
+func anyCommonElements <T: SequenceType, U: SequenceType where T.Generator.Element:Equatable, T.Generator.Element == U.Generator.Element> (lhs: T, _ rhs: U) -> Bool {
     for lhsItem in lhs {
         for rhsItem in rhs {
             if lhsItem == rhsItem {
@@ -600,7 +601,7 @@ func morningRoutine() throws {
     print("11111")
     print(teaKettleHeating)
     defer {
-        
+
         teaKettleHeating = false
         print("33333")
         print(teaKettleHeating)
@@ -610,14 +611,3 @@ func morningRoutine() throws {
 }
 
 try morningRoutine()
-
-
-
-
-
-
-
-
-
-
-

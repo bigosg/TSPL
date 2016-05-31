@@ -25,7 +25,7 @@ reference2 = reference1
 reference3 = reference1
 reference1 = nil
 reference2 = nil
-reference3 = nil // 打印 “John Appleseed is being deinitialized”
+//reference3 = nil // 打印 “John Appleseed is being deinitialized”
 
 //========================
 //   类实例之间的循环强引用

@@ -16,8 +16,8 @@
 //================
 class Bank {
     static var coinsInBank = 10_000
-    static func vendCoins(var numberOfCoinToVend: Int) -> Int {
-        numberOfCoinToVend = min(numberOfCoinToVend, coinsInBank)
+    static func vendCoins(numberOfCoinToVend: Int) -> Int {
+        let numberOfCoinToVend = min(numberOfCoinToVend, coinsInBank)
         coinsInBank -= numberOfCoinToVend
         return numberOfCoinToVend
     }
