@@ -146,7 +146,7 @@ let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], "Andrea")
 //=======================================
 
 protocol Container {
-    typealias ItemType
+    associatedtype ItemType
     mutating func append(item: ItemType)
     var count: Int { get }
     subscript(i: Int) -> ItemType { get }
