@@ -3,15 +3,16 @@
 //                  Bitwise Operators
 //=======================================================
 
-func bitsToString(var number: UInt8) -> String {
+func bitsToString(number: UInt8) -> String {
     var bitString = ""
-    for i in 0..<8 {
-        if (number & UInt8(1)) == 1 {
+    var number1 = number
+    for _ in 0..<8 {
+        if (number1 & UInt8(1)) == 1 {
             bitString = "1" + bitString
         } else {
             bitString = "0" + bitString
         }
-        number = number >> 1
+        number1 = number1 >> 1
     }
     
     return bitString
@@ -113,14 +114,6 @@ func += (inout left: Vector2D, right: Vector2D) {
 var original = Vector2D(x: 1.0, y: 2.0)
 let vectorToAdd = Vector2D(x: 3.0, y: 4.0)
 original += vectorToAdd
-
-prefix func ++ (inout vector: Vector2D) -> Vector2D {
-    vector += Vector2D(x: 1.0, y: 1.0)
-    return vector
-}
-
-var toIncrement = Vector2D(x: 3.0, y: 4.0)
-let afterIncrement = ++toIncrement
 
 // Equivalence Operators
 func == (left: Vector2D, right: Vector2D) -> Bool {
