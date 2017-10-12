@@ -1,3 +1,3 @@
 # Swift-3.0
-Learning Swift Language.
+Learning The Swift Program Language.
 
